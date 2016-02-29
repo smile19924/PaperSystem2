@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="paper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.Student" >
+    <id column="studentno" property="studentno" jdbcType="VARCHAR" />
+    <result column="studentname" property="studentname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="INTEGER" />
+    <result column="major" property="major" jdbcType="INTEGER" />
+    <result column="classes" property="classes" jdbcType="VARCHAR" />
+    <result column="teacherno" property="teacherno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    studentno, studentname, sex, telephone, password, department, major, classes, teacherno
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where studentno = #{studentno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from student
+    where studentno = #{studentno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.project.entity.Student" >
+    insert into student (studentno, studentname, sex, 
+      telephone, password, department, 
+      major, classes, teacherno
+      )
+    values (#{studentno,jdbcType=VARCHAR}, #{studentname,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, 
+      #{telephone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{department,jdbcType=INTEGER}, 
+      #{major,jdbcType=INTEGER}, #{classes,jdbcType=VARCHAR}, #{teacherno,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.entity.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentno != null" >
+        studentno,
+      </if>
+      <if test="studentname != null" >
+        studentname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="classes != null" >
+        classes,
+      </if>
+      <if test="teacherno != null" >
+        teacherno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentno != null" >
+        #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="studentname != null" >
+        #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=INTEGER},
+      </if>
+      <if test="classes != null" >
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherno != null" >
+        #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.entity.Student" >
+    update student
+    <set >
+      <if test="studentname != null" >
+        studentname = #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=INTEGER},
+      </if>
+      <if test="classes != null" >
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherno != null" >
+        teacherno = #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where studentno = #{studentno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.entity.Student" >
+    update student
+    set studentname = #{studentname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      department = #{department,jdbcType=INTEGER},
+      major = #{major,jdbcType=INTEGER},
+      classes = #{classes,jdbcType=VARCHAR},
+      teacherno = #{teacherno,jdbcType=VARCHAR}
+    where studentno = #{studentno,jdbcType=VARCHAR}
+  </update>
+</mapper>

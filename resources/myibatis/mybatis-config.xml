@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 当结果集中含有Null值时是否执行映射对象的setter或者Map对象的put方法。 此设置对于原始类型如int,boolean等无效。 -->
+		<setting name="callSettersOnNulls" value="true" />
+	</settings>
+	
+	<typeAliases>
+	</typeAliases>
+
+	<plugins>
+		<plugin interceptor="com.project.common.tabletool.PageInterceptor">
+			<!--  支持 mysql、oracle、hsql-->
+			<property name="databaseType" value="mysql" />
+		</plugin>
+		<!-- 结果集字符集转换 iso到utf8 -->
+		<!-- <plugin interceptor="com.xwtec.mss.work.common.mybatis.ResultSetHandlerInterceptor"/> -->
+	</plugins>
+
+	<mappers>
+		<mapper resource="myibatis/mapper/TeacherMapper.xml" />
+		<mapper resource="myibatis/mapper/StudentMapper.xml" />
+		<mapper resource="myibatis/mapper/CourseMapper.xml" />
+		<mapper resource="myibatis/mapper/DepartmentmajorMapper.xml" />
+		<mapper resource="myibatis/mapper/FieldcheckMapper.xml" />
+		<mapper resource="myibatis/mapper/OpenreportMapper.xml" />
+		<mapper resource="myibatis/mapper/ProgressreportMapper.xml" />
+		<mapper resource="myibatis/mapper/ScoreMapper.xml" />
+	</mappers>
+
+</configuration>   

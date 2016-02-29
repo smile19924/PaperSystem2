@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="paper.PaperMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.Paper" >
+    <id column="paperid" property="paperid" jdbcType="INTEGER" />
+    <result column="studentno" property="studentno" jdbcType="VARCHAR" />
+    <result column="designname" property="designname" jdbcType="VARCHAR" />
+    <result column="papername" property="papername" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="INTEGER" />
+    <result column="departmentsuggest" property="departmentsuggest" jdbcType="VARCHAR" />
+    <result column="isone" property="isone" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="checktime" property="checktime" jdbcType="TIMESTAMP" />
+    <result column="teacherno" property="teacherno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    paperid, studentno, designname, papername, type, source, reason, departmentsuggest, 
+    isone, status, createtime, checktime, teacherno
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from paper
+    where paperid = #{paperid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paper
+    where paperid = #{paperid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.entity.Paper" >
+    insert into paper (paperid, studentno, designname, 
+      papername, type, source, 
+      reason, departmentsuggest, isone, 
+      status, createtime, checktime, 
+      teacherno)
+    values (#{paperid,jdbcType=INTEGER}, #{studentno,jdbcType=VARCHAR}, #{designname,jdbcType=VARCHAR}, 
+      #{papername,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{source,jdbcType=INTEGER}, 
+      #{reason,jdbcType=INTEGER}, #{departmentsuggest,jdbcType=VARCHAR}, #{isone,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{checktime,jdbcType=TIMESTAMP}, 
+      #{teacherno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.entity.Paper" >
+    insert into paper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paperid != null" >
+        paperid,
+      </if>
+      <if test="studentno != null" >
+        studentno,
+      </if>
+      <if test="designname != null" >
+        designname,
+      </if>
+      <if test="papername != null" >
+        papername,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="departmentsuggest != null" >
+        departmentsuggest,
+      </if>
+      <if test="isone != null" >
+        isone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="checktime != null" >
+        checktime,
+      </if>
+      <if test="teacherno != null" >
+        teacherno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paperid != null" >
+        #{paperid,jdbcType=INTEGER},
+      </if>
+      <if test="studentno != null" >
+        #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="designname != null" >
+        #{designname,jdbcType=VARCHAR},
+      </if>
+      <if test="papername != null" >
+        #{papername,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=INTEGER},
+      </if>
+      <if test="departmentsuggest != null" >
+        #{departmentsuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="isone != null" >
+        #{isone,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherno != null" >
+        #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.entity.Paper" >
+    update paper
+    <set >
+      <if test="studentno != null" >
+        studentno = #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="designname != null" >
+        designname = #{designname,jdbcType=VARCHAR},
+      </if>
+      <if test="papername != null" >
+        papername = #{papername,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=INTEGER},
+      </if>
+      <if test="departmentsuggest != null" >
+        departmentsuggest = #{departmentsuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="isone != null" >
+        isone = #{isone,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checktime != null" >
+        checktime = #{checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherno != null" >
+        teacherno = #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where paperid = #{paperid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.entity.Paper" >
+    update paper
+    set studentno = #{studentno,jdbcType=VARCHAR},
+      designname = #{designname,jdbcType=VARCHAR},
+      papername = #{papername,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      source = #{source,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=INTEGER},
+      departmentsuggest = #{departmentsuggest,jdbcType=VARCHAR},
+      isone = #{isone,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      checktime = #{checktime,jdbcType=TIMESTAMP},
+      teacherno = #{teacherno,jdbcType=VARCHAR}
+    where paperid = #{paperid,jdbcType=INTEGER}
+  </update>
+</mapper>

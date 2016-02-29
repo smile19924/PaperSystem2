@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="paper.ScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.Score" >
+    <id column="studentno" property="studentno" jdbcType="INTEGER" />
+    <id column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    studentno, courseid, score
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.project.entity.ScoreKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from score
+    where studentno = #{studentno,jdbcType=INTEGER}
+      and courseid = #{courseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.project.entity.ScoreKey" >
+    delete from score
+    where studentno = #{studentno,jdbcType=INTEGER}
+      and courseid = #{courseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.entity.Score" >
+    insert into score (studentno, courseid, score
+      )
+    values (#{studentno,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.entity.Score" >
+    insert into score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentno != null" >
+        studentno,
+      </if>
+      <if test="courseid != null" >
+        courseid,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentno != null" >
+        #{studentno,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.entity.Score" >
+    update score
+    <set >
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where studentno = #{studentno,jdbcType=INTEGER}
+      and courseid = #{courseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.entity.Score" >
+    update score
+    set score = #{score,jdbcType=DOUBLE}
+    where studentno = #{studentno,jdbcType=INTEGER}
+      and courseid = #{courseid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="paper.FieldcheckMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.Fieldcheck" >
+    <id column="fieldid" property="fieldid" jdbcType="INTEGER" />
+    <result column="tablename" property="tablename" jdbcType="VARCHAR" />
+    <result column="fieldname" property="fieldname" jdbcType="VARCHAR" />
+    <result column="fieldvalue" property="fieldvalue" jdbcType="TINYINT" />
+    <result column="fielddesc" property="fielddesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fieldid, tablename, fieldname, fieldvalue, fielddesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fieldcheck
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fieldcheck
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.entity.Fieldcheck" >
+    insert into fieldcheck (fieldid, tablename, fieldname, 
+      fieldvalue, fielddesc)
+    values (#{fieldid,jdbcType=INTEGER}, #{tablename,jdbcType=VARCHAR}, #{fieldname,jdbcType=VARCHAR}, 
+      #{fieldvalue,jdbcType=TINYINT}, #{fielddesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.entity.Fieldcheck" >
+    insert into fieldcheck
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fieldid != null" >
+        fieldid,
+      </if>
+      <if test="tablename != null" >
+        tablename,
+      </if>
+      <if test="fieldname != null" >
+        fieldname,
+      </if>
+      <if test="fieldvalue != null" >
+        fieldvalue,
+      </if>
+      <if test="fielddesc != null" >
+        fielddesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fieldid != null" >
+        #{fieldid,jdbcType=INTEGER},
+      </if>
+      <if test="tablename != null" >
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldname != null" >
+        #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldvalue != null" >
+        #{fieldvalue,jdbcType=TINYINT},
+      </if>
+      <if test="fielddesc != null" >
+        #{fielddesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.entity.Fieldcheck" >
+    update fieldcheck
+    <set >
+      <if test="tablename != null" >
+        tablename = #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldname != null" >
+        fieldname = #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldvalue != null" >
+        fieldvalue = #{fieldvalue,jdbcType=TINYINT},
+      </if>
+      <if test="fielddesc != null" >
+        fielddesc = #{fielddesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.entity.Fieldcheck" >
+    update fieldcheck
+    set tablename = #{tablename,jdbcType=VARCHAR},
+      fieldname = #{fieldname,jdbcType=VARCHAR},
+      fieldvalue = #{fieldvalue,jdbcType=TINYINT},
+      fielddesc = #{fielddesc,jdbcType=VARCHAR}
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </update>
+</mapper>

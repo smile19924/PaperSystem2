@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="paper.ProgressreportMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.Progressreport" >
+    <id column="progressid" property="progressid" jdbcType="INTEGER" />
+    <result column="progresscontent" property="progresscontent" jdbcType="VARCHAR" />
+    <result column="teachersuggest" property="teachersuggest" jdbcType="VARCHAR" />
+    <result column="isfinished" property="isfinished" jdbcType="INTEGER" />
+    <result column="attitude" property="attitude" jdbcType="INTEGER" />
+    <result column="suggestresult" property="suggestresult" jdbcType="INTEGER" />
+    <result column="quality" property="quality" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="studentno" property="studentno" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="checktime" property="checktime" jdbcType="TIMESTAMP" />
+    <result column="teacherno" property="teacherno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    progressid, progresscontent, teachersuggest, isfinished, attitude, suggestresult, 
+    quality, status, studentno, createtime, checktime, teacherno
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from progressreport
+    where progressid = #{progressid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from progressreport
+    where progressid = #{progressid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.entity.Progressreport" >
+    insert into progressreport (progressid, progresscontent, teachersuggest, 
+      isfinished, attitude, suggestresult, 
+      quality, status, studentno, 
+      createtime, checktime, teacherno
+      )
+    values (#{progressid,jdbcType=INTEGER}, #{progresscontent,jdbcType=VARCHAR}, #{teachersuggest,jdbcType=VARCHAR}, 
+      #{isfinished,jdbcType=INTEGER}, #{attitude,jdbcType=INTEGER}, #{suggestresult,jdbcType=INTEGER}, 
+      #{quality,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{studentno,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{checktime,jdbcType=TIMESTAMP}, #{teacherno,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.entity.Progressreport" >
+    insert into progressreport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="progressid != null" >
+        progressid,
+      </if>
+      <if test="progresscontent != null" >
+        progresscontent,
+      </if>
+      <if test="teachersuggest != null" >
+        teachersuggest,
+      </if>
+      <if test="isfinished != null" >
+        isfinished,
+      </if>
+      <if test="attitude != null" >
+        attitude,
+      </if>
+      <if test="suggestresult != null" >
+        suggestresult,
+      </if>
+      <if test="quality != null" >
+        quality,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="studentno != null" >
+        studentno,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="checktime != null" >
+        checktime,
+      </if>
+      <if test="teacherno != null" >
+        teacherno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="progressid != null" >
+        #{progressid,jdbcType=INTEGER},
+      </if>
+      <if test="progresscontent != null" >
+        #{progresscontent,jdbcType=VARCHAR},
+      </if>
+      <if test="teachersuggest != null" >
+        #{teachersuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinished != null" >
+        #{isfinished,jdbcType=INTEGER},
+      </if>
+      <if test="attitude != null" >
+        #{attitude,jdbcType=INTEGER},
+      </if>
+      <if test="suggestresult != null" >
+        #{suggestresult,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="studentno != null" >
+        #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherno != null" >
+        #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.entity.Progressreport" >
+    update progressreport
+    <set >
+      <if test="progresscontent != null" >
+        progresscontent = #{progresscontent,jdbcType=VARCHAR},
+      </if>
+      <if test="teachersuggest != null" >
+        teachersuggest = #{teachersuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinished != null" >
+        isfinished = #{isfinished,jdbcType=INTEGER},
+      </if>
+      <if test="attitude != null" >
+        attitude = #{attitude,jdbcType=INTEGER},
+      </if>
+      <if test="suggestresult != null" >
+        suggestresult = #{suggestresult,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        quality = #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="studentno != null" >
+        studentno = #{studentno,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checktime != null" >
+        checktime = #{checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherno != null" >
+        teacherno = #{teacherno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where progressid = #{progressid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.entity.Progressreport" >
+    update progressreport
+    set progresscontent = #{progresscontent,jdbcType=VARCHAR},
+      teachersuggest = #{teachersuggest,jdbcType=VARCHAR},
+      isfinished = #{isfinished,jdbcType=INTEGER},
+      attitude = #{attitude,jdbcType=INTEGER},
+      suggestresult = #{suggestresult,jdbcType=INTEGER},
+      quality = #{quality,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      studentno = #{studentno,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      checktime = #{checktime,jdbcType=TIMESTAMP},
+      teacherno = #{teacherno,jdbcType=VARCHAR}
+    where progressid = #{progressid,jdbcType=INTEGER}
+  </update>
+</mapper>
