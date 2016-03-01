@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -23,6 +21,7 @@ import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
+import org.apache.log4j.Logger;
 
 import com.project.util.Toolkits;
 
@@ -43,8 +42,9 @@ import com.project.util.Toolkits;
  * 置参数的功能把Sql语句中的参数进行替换，之后再执行查询记录数的Sql语句进行总记录数的统计。
  */
 @Intercepts({ @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class }) })
-@Slf4j
 public class PageInterceptor implements Interceptor {
+	
+	private static Logger log = Logger.getLogger(PageInterceptor.class);
 
 	private String databaseType;// 数据库类型，不同的数据库有不同的分页方法
 

@@ -11,6 +11,7 @@ import com.project.mapper.TeacherMapper;
 import com.project.service.BaseService;
 import com.project.service.TeacherService;
 
+@Service
 public class TeacherServiceImpl extends BaseService<Teacher> implements TeacherService {
 	
 	@Resource(name="teacherMapper")

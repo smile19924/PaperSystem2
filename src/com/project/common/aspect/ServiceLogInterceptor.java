@@ -1,7 +1,7 @@
 package com.project.common.aspect;
 
-import lombok.extern.slf4j.Slf4j;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,9 +14,10 @@ import com.project.util.Toolkits;
  * 切面程序
  * */
 @Aspect
-@Slf4j
 public class ServiceLogInterceptor {
 
+	private static Logger log = Logger.getLogger(ServiceLogInterceptor.class);
+	
 	public static final ObjectMapper MAPPER = new ObjectMapper();
 
 	/**

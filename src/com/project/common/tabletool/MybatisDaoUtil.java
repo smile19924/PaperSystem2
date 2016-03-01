@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.extern.slf4j.Slf4j;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,9 +29,10 @@ import com.project.util.Toolkits;
  * @param <T>
  */
 @SuppressWarnings({ "rawtypes", "unchecked" })
-@Slf4j
 @Repository("dao")
 public class MybatisDaoUtil<T> {
+	
+	private static Logger log = Logger.getLogger(MybatisDaoUtil.class);
 
 	private SqlSession sqlSession;
 

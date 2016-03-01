@@ -8,9 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import com.project.util.Toolkits;
 
@@ -22,8 +22,9 @@ import com.project.util.Toolkits;
  *
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
-@Slf4j
 public class CharacterSetUtil {
+	
+	private static Logger log = Logger.getLogger(CharacterSetUtil.class);
 
 	/**
 	 * ISO8859-1字符类型
