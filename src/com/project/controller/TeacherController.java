@@ -21,12 +21,12 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	@Autowired
-	private BaseService<Teacher> service;
+	/*@Autowired
+	private BaseService<Teacher> service;*/
 	
 	@ModelAttribute
 	public void setClass() {
-		service.setEntityClass(Teacher.class);
+		teacherService.setEntityClass(Teacher.class);
 	}
 	
 	@RequestMapping("/login")
@@ -42,7 +42,7 @@ public class TeacherController {
 	@RequestMapping("/look")
 	public void look() {
 //		service.setEntityClass(Teacher.class);
-		Teacher teacher = service.selectByPrimaryKey("2011123001");
+		Teacher teacher = teacherService.selectByPrimaryKey("2011123001");
 //		Teacher teacher = dao.getEntity("paper.TeacherMapper.selectByPrimaryKey", "2011123001");
 		System.out.println(teacher);
 	}
